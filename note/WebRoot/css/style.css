@@ -1,0 +1,254 @@
+#@font-face {
+#    font-family: "Iransans";
+#    font-style: normal;
+#    font-weight: normal;
+#	src:url("../font/IRANSans-web.eot");
+#    src:url("../font/IRANSans-web.eot") format("opentype"),
+#	url("../font/IRANSans-web.ttf") format("truetype");
+#}
+
+
+@font-face {
+    font-family: "yekan";
+    font-style: normal;
+    font-weight: normal;
+    src:url("../fonts/IRANSans-web.ttf") format("truetype");
+#	src:url("../fonts/BYekan.ttf");
+ #   src:url("../fonts/BYekan.ttf") format("truetype");
+ #	src:url("../font/IRANSans-web.eot");
+ #   src:url("../font/IRANSans-web.eot") format("opentype"),
+	
+ 
+}
+button{
+    font-family: "Yekan" !important;
+}
+ .ui-menu .ui-menuitem-link {
+    font-family: "Yekan" !important;
+ }
+ .ui-menu .ui-menuitem-text {
+    float: right;
+}
+body {
+
+	font-family: "Yekan" !important;
+	direction: rtl;
+	position: relative;
+	text-align: center;
+	font-size: 11px;
+}
+
+body, div {
+
+	font-family: "Yekan" !important;
+	direction: rtl;
+}
+input{
+	font-family: "Yekan" !important;
+}
+.ui-datatable tbody td{
+
+         border-style: none;
+         border-bottom: 1px solid #ddd; 
+}
+.ui-datatable thead th{
+  border-style: none; 
+  border-bottom: 1px solid #ddd;
+}
+.ui-widget-content{
+	border :none;
+}
+.ui-state-default{
+background-color: #dae7f2;
+background: unset;
+}
+.ui-datatable .ui-datatable-footer{
+	    text-align: left;
+	        border: 1px solid #bbbbbb;
+
+}
+.ui-datatable table {
+    border: 1px solid #bbbbbb;
+ 
+}
+.ui-widget-header{
+background: unset;
+	background-color: #dae7f2;
+
+}
+
+table thead {
+	    background-color: #337ab72e;
+}
+
+#formBox {
+    padding: 30px 30px 0px 30px;
+	direction: rtl;
+	text-align: right;
+
+
+}
+.myalert{
+	list-style-type: none;
+	
+}
+
+.headerUL{
+	   text-align: right;    padding-right: 10px;
+}
+.headerfirstli{
+	list-style-type: none;     font-weight: bolder;    color: #26A2DC;font-weight: bold;font-size: 13px;     padding-top: 10px;
+	
+}
+.headersecondli{
+		list-style-type: none;    padding-top: 10px;
+	
+}
+.headerli{
+	
+	list-style-type: none;
+}
+.tableview{
+	width:30%;
+}
+.tableview tbody tr td{
+	    text-align: right;
+	    
+}
+.tableviewsearch{
+	width:45%;
+}
+.controltable  tbody tr td{
+	    padding: 1px;
+}
+
+.viewbutton{
+	outline:none
+}
+
+.table-bordered  thead  tr  th{
+	 text-align: center;
+}
+
+td{
+	vertical-align:top;
+	 text-align: center;
+}
+
+.table tfoot tr th {
+	border-top: 2px solid #ddd;
+}
+
+.table thead tr th {
+	text-align: center
+}
+
+.table-view {
+	cellspacing:0; 
+	cellpadding:0;
+	border: none !important;
+}
+.table-view tr td{
+	 text-align: right;
+	 width: 50%;
+	 border-top: 0px !important;
+}
+span.headerLinkBlod, a.headerLinkBlod{
+	color: #26A2DC;
+	font-weight: bold;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+a.headerLinkBlod:hover{
+	text-decoration: underline;;
+}
+
+span.headerLink{
+	color: ##B5B5B5;
+	font-weight: bold;
+
+
+}
+
+span.headerVector{
+	color: ##B5B5B5;
+	font-weight: bold;
+	font-size: 22px;
+
+}
+
+ul.crumbs2{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}		
+.crumbs2 {
+	height:2.3em;
+	font-weight: normal;
+}
+.crumbs2 li {
+	list-style-type:none;
+	float:right;
+	line-height:2.3em;
+	color:#999999;
+	display:block;
+	padding:7px 5px 0 5px;
+}
+.crumbs2 li .selectedCrumb {
+	color: #000000;
+}
+.crumbs2 li.lastCrumb{
+	background:transparent ;
+}	
+.crumbs2 li .imgSpan{
+	width: 16px;
+	height:16px;
+	display: inline-block;
+	vertical-align: middle;
+}	
+.crumbs2 li span+span{display:inline-block;}
+
+div.headerLink{
+	position:absolute;
+	z-index:1;
+	background-color: white;
+}
+
+div.portalHeader{
+	padding: 30px;
+	position: relative;
+}
+
+div.dottedLine{
+	width: 100%;
+	border-top: 1px dotted #ccc; 
+	margin-top: 25px;
+}
+
+.fieldTitle-view{
+	margin-left: 5px;
+	color: #60628a;
+}
+.tableView {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.tableView > thead > tr > th,
+.tableView > tbody > tr > th,
+.tableView > tfoot > tr > th,
+.tableView > thead > tr > td,
+.tableView > tbody > tr > td,
+.tableView > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 0px solid #ddd;
+  text-align: right;
+}
+.btn{
+	    font-size: 12px;
+	
+}
+

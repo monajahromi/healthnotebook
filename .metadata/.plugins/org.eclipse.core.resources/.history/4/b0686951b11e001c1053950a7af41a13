@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" > 
+
+<h:head>
+	<title>search Person</title>
+	 <ui:include src="/jsinclude.xhtml" />
+
+<script type="text/javascript">
+function checknationcode(){
+var list= document.getElementById("myform:nationcode");
+if (list.value=="")
+{alert('لطفا کدملی را وارد نمایید.');
+return false;
+}
+  document.getElementById("loadingbar").style.display=''; 
+}
+
+
+</script>
+
+</h:head>
+<h:body>
+
+	<h:form id= "myform">
+	<h:inputHidden value="#{searchBean.initSinglePrint}"></h:inputHidden>
+		<div class="portalHeader">
+			<div class="headerLink">
+				
+					<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> جستجو بیمه شده اصسلی</li>
+				  
+				  
+				</ul> 
+			</div>
+		
+		</div>
+		<div id="formBox" >
+		 
+		  <p:messages id="messages"  closable="true" showDetail="true">
+		     <p:autoUpdate />
+    </p:messages>
+		  	<table class="table"  style="    width: 45%;" >
+			<tr >
+			
+			
+					<td style="    border-top-style: hidden;    text-align: right;"><h:outputText value="  کدملی بیمه شده اصلی : "></h:outputText>
+							<h:inputText value="#{searchBean.nationCode}"   id="nationcode"></h:inputText>
+					</td>
+					</tr>
+				
+				
+			
+					<tfoot >
+					<tr>
+					<td></td>
+					<td style= "text-align:left;">
+					<h:commandButton value="جستجو"   action="#{searchBean.findPerson}" style="width:100%" onstart="PF('statusDialog').show()" onclick= "return checknationcode();" styleClass="btn btn-primary" >
+					</h:commandButton>
+					 <img src="img/ajax-loader.gif"  id="loadingbar" style="display:none"/>
+								</td>
+								</tr>
+						</tfoot>
+
+			
+
+			</table>
+		</div>
+		
+	</h:form>
+</h:body>
+</html>

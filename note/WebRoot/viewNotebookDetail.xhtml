@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>list page</title>
+	 <ui:include src="/jsinclude.xhtml" />
+<style>
+.ui-menu.ui-menu-dynamic {
+width: 180px;
+}
+.ui-widget-content {
+top: 50px !important;
+}
+.ui-confirm-dialog .ui-dialog-content {
+top: 10px !important;
+}
+}
+</style>	 
+
+</h:head>
+<h:body>
+	<h:form id="myfrom">
+	  <p:growl id="message" showDetail="true" />
+	<div class="portalHeader">
+			<div class="headerLink">
+				
+				
+						 
+						<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> لیست دفترچه های سلامت  </li>
+				  <li class ="headersecondli"  ><img src="img/ar-l-b.png" /> بیمه شده #{param['name']} </li>
+				  
+				</ul> 
+									
+			
+				
+			</div>
+			
+		</div>
+		<br/><br/>
+		<div id="formBox" style="">
+		 
+			
+			<table class="table" >
+				<thead>
+					<tr>
+						<th style=" text-align: center;">مرتبه چاپ</th>
+						<th style=" text-align: center;">تعداد برگ</th>
+						<th style=" text-align: center;">تاریخ تحویل</th>
+						<th style=" text-align: center;">واحد تحویل دهنده</th>	
+						<th style=" text-align: center;">وضعیت</th>
+						<th style=" text-align: center;">تاریخ ابطال</th>
+						<th style=" text-align: center;">سریال دفترچه</th>
+						
+						<th style=" text-align: center;">عملیات</th>													
+										
+						
+					</tr>
+				</thead>
+				 <tfoot>
+
+					<tr>
+						<th colspan="8"  >
+						<p:button outcome="insurancedPersonList" value="بازگشت" icon="ui-icon-arrowthick-1-e">
+						</p:button>
+						</th>
+					
+					</tr>
+				</tfoot>
+				<tbody>
+				 <p:repeat value="#{searchBean.pbs}" var="o">
+				 </p:repeat>
+					<ui:repeat var="o" value="#{searchBean.pbs}" >
+
+						<tr>
+							<td class="">#{o.printTimes}</td>
+							<td class="">#{o.pagescount}</td>
+							<td class="">#{o.delivarydatePersian}</td>
+							<td class="">#{o.delivaryUnit}</td>
+							<td class="">
+							#{o.status eq 'Open'? 'فعال' : 'غیرفعال'}</td>
+							<td class=""> #{o.expirarydatePersian == null ? '---' : o.expirarydatePersian}</td>
+							<td class="">#{o.passbookSerial}</td>
+							
+						<td >
+						
+						
+					
+							
+					           
+					        
+ 
+					    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					    </p:confirmDialog>
+					    
+					     <p:menuButton  icon="ui-icon-gear" >
+					  <p:menuitem  value="جزییات برگه ها"  action="#{searchBean.viewNotebookPageDetail}" ajax="false"  icon="ui-icon-note">
+		                    <f:param name="passbookSerial" value ="#{o.passbookSerial}"/>
+		                    <f:param name="name" value="#{param['name']}" />
+					        
+				     </p:menuitem>  
+				      <p:menuitem  value="چاپ جلد دفترچه"  action="#{searchBean.printSingleCover}" icon="ui-icon-print" ajax="false" rendered="#{o.status eq 'Open'}">
+		                    <f:param name="passbookSerial" value ="#{o.passbookSerial}"/>
+					       
+				     </p:menuitem>
+				      <p:menuitem  value="بازیابی فایل pdf دفترچه"  action="#{searchBean.printSinglePages}" icon="ui-icon-print" ajax="false" rendered="#{o.status eq 'Open'}">
+		                    <f:param name="passbookSerial" value ="#{o.passbookSerial}"/>
+					       
+				     </p:menuitem>   
+		             <p:menuitem  value="ابطال دفترچه"  action="#{searchBean.cancelnotebook}" update="myfrom" icon="ui-icon-close" rendered="#{o.status eq 'Open'}" >
+		                    <f:param name="passbookSerial" value ="#{o.passbookSerial}"/>
+					          <p:confirm header="تایید ابطال" message="آیا از ابطال دفترچه با سریال #{o.passbookSerial} مطمئن هستید  ؟" icon="ui-icon-alert" />
+				     </p:menuitem>
+				    
+		             </p:menuButton>
+					       
+	
+							</td>
+						</tr>
+
+					</ui:repeat>
+				</tbody>
+
+
+			</table>
+		</div>
+	</h:form>
+</h:body>
+</html>

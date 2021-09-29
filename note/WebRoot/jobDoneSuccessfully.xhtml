@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>list page</title>
+ <ui:include src="/jsinclude.xhtml" />
+</h:head>
+<h:body>
+	<h:form>
+		
+		<div id="formBox">
+			<table class="table tableview">
+				<tr>
+					<td style="    border-top-style: hidden;"><h:outputText
+							value="چاپ با موفقیت انجام شد."></h:outputText>
+					</td>
+				</tr>
+
+				<tr >
+					<th  style="">
+					
+					<p:button outcome="#{searchBean.bachPrint ?   'contractList' : 'searchPerson'}" value="صفحه جستجو" icon="ui-icon-arrowthick-1-e">
+						</p:button>
+							</th>		
+				</tr>
+
+
+
+
+			</table>
+		</div>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<h:head>
+		<title>list page</title>
+		<ui:include src="/jsinclude.xhtml" />
+
+
+	</h:head>
+	<h:body>
+		<h:form>
+			<h:inputHidden value="#{searchBean.initContract}"></h:inputHidden>
+
+			<div class="portalHeader">
+				<div class="headerLink">
+
+
+					<ul class="headerUL">
+						<li class="headerfirstli">
+							<img src="img/ar-l.png" />
+							فهرست قراردادهای فعال
+						</li>
+
+
+					</ul>
+
+
+				</div>
+
+			</div>
+
+			<div id="formBox" style="width: 100%;">
+			
+				<p:messages id="messages" showDetail="true" closable="true"
+					style="    text-align: right;">
+					<p:autoUpdate />
+				</p:messages>
+
+
+				<p:dataTable id="radioDT" var="o" value="#{searchBean.cList}"
+					selection="#{searchBean.selectedContract}" rowKey="#{o.id}">
+
+					<p:column selectionMode="single"
+						style="width:50px;text-align:center" />
+
+					<p:column headerText="شماره بیمه نامه">
+						<h:outputText value="#{o.generalNo}" />
+					</p:column>
+					<p:column headerText="نام بیمه گزار">
+						<h:outputText value="#{o.companyname}" />
+					</p:column>
+					<p:column headerText="کدنماینده">
+						<h:outputText value="#{o.offerAgent}" />
+					</p:column>
+
+
+				</p:dataTable>
+
+				<div  style="border : 1px solid gray; width : 100% ; padding : 10px ; margin : 10px 0px 20px">
+
+					<h:outputLabel for="datef" value="تاریخ خرید از  : " />
+					<p:inputMask id="datef" value="#{searchBean.startContarctDate}"
+						mask="9999/99/99" style="direction: ltr;" styleClass="myinputtext" />
+
+					<h:outputLabel for="datet" value="تاریخ خرید تا  : " />
+					<p:inputMask id="datet" value="#{searchBean.startContarctDate}"
+						mask="9999/99/99" style="direction: ltr;" styleClass="myinputtext" />
+					
+					<div>
+						
+						<h:commandLink value="چاپ جلد دفترچه"
+							action="#{searchBean.printAllPersonInContractCover}"
+							styleClass="btn btn-primary">
+						</h:commandLink>
+
+
+
+						<h:commandLink value="چاپ برگه های دفترچه"
+							action="#{searchBean.printAllPersonInContractPages}"
+							style="margin-right: 2px;" id="chapam"
+							styleClass="btn btn-primary">
+						</h:commandLink>
+					</div>
+	
+				</div>
+
+			
+			</div>
+
+		</h:form>
+
+	</h:body>
+</html>

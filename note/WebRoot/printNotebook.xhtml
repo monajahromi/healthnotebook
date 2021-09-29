@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>list page</title>
+	 <ui:include src="/jsinclude.xhtml" />
+<script type="text/javascript">
+
+
+function updateEndSerial(){
+var list= document.getElementById("form:fromSerial"); 
+var list1=document.getElementById("form:howManyPageToPrint");  
+var value= list.value;
+if (!value==""){
+var value1= list1.value;
+
+var a= document.getElementById("form:toSerial");
+a.value=parseInt(value) +parseInt(value1)-1;
+}
+
+
+ 
+
+}
+
+function changeb(){
+var control= $("[id$='control']");
+var print= $("[id$='print']");
+print[0].setAttribute('disabled',true);
+control[0].removeAttribute('disabled');
+
+
+}
+
+</script>
+</h:head>
+<h:body>
+
+	<h:form id="form">
+		<div class="portalHeader">
+			<div class="headerLink" >
+				<h:panelGroup rendered="#{!searchBean.peresentedForPrint.hasBrokenPagesDuringPrint}">
+					 
+						<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> تخصیص سریال به </li>
+				  <li class ="headersecondli" ><img src="img/ar-l-b.png" />  #{searchBean.peresentedForPrint.name} </li>
+				  
+				</ul> 
+				</h:panelGroup>
+				<h:panelGroup rendered="#{searchBean.peresentedForPrint.hasBrokenPagesDuringPrint}">
+					 
+						<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> تخصیص  مجدد سریال به </li>
+				  <li class ="headersecondli" ><img src="img/ar-l-b.png" />  #{searchBean.peresentedForPrint.name} </li>
+				  
+				</ul> 
+				</h:panelGroup>
+				
+			</div>
+		
+		</div>
+		
+		
+		<div id="formBox" style="    margin-top: 10px;">
+		<h:panelGroup rendered="#{searchBean.peresentedForPrint.hasBrokenPagesDuringPrint}">
+					 <h:outputText value="سریال های مورد نظر باطل شدند. لطفا سریالهای جایگزین را وارد نمایید. " style="  color: #856404;background-color: #fff3cd;">
+					 </h:outputText>
+		</h:panelGroup>			 
+					 
+					 
+		 <h:messages style="color:red;    padding: 5px;" />
+		
+		 	<h:inputHidden  value= "#{searchBean.peresentedForPrint.howManyPageToPrint}" id= "howManyPageToPrint"  ></h:inputHidden>
+			<table class="table tableview"  >
+			<tr>
+			
+			
+					<td style="    border-top-style: hidden;"><h:outputText value=" نام و نام خانوادگی : "></h:outputText>
+						<h:outputText value="#{searchBean.peresentedForPrint.name}"></h:outputText>
+					</td>
+					</tr>
+				<tr>
+					<td><h:outputText value="کد ملی : "></h:outputText> <h:outputText
+							value=" #{searchBean.peresentedForPrint.nationCode}"></h:outputText>
+					</td>
+				</tr>
+				<tr>
+					<td><h:outputText value="از شماره سریال : "  ></h:outputText> 
+						<h:inputText  onblur="updateEndSerial();" onkeyup="updateEndSerial();"	value="#{searchBean.peresentedForPrint.printFromThis}"  id= "fromSerial" >
+						</h:inputText>
+					</td>
+					</tr>
+				<tr>
+					<td><h:outputText value="تا  شماره سریال : "></h:outputText>
+					<h:inputText  readonly="true" disabled="true"	value="#{searchBean.peresentedForPrint.printFromThis + searchBean.peresentedForPrint.howManyPageToPrint-1}"  id= "toSerial" ></h:inputText>
+					 
+					</td>
+				</tr>
+				
+			
+					<tfoot >
+					<tr>
+					<td style= "text-align:left;">
+					
+					<p:button outcome="insurancedPersonList" value="بازگشت" icon="ui-icon-arrowthick-1-e" rendered="#{!searchBean.peresentedForPrint.hasBrokenPagesDuringPrint}">
+					</p:button>
+						
+					<p:commandButton value="تخصیص سریال و ادامه" action="#{searchBean.assignSerial}" ajax="false" onclick=" document.getElementById('loadingbar').style.display=''; " icon="ui-icon-print"></p:commandButton>
+							 <img src="img/ajax-loader.gif"  id="loadingbar" style="display:none"/>
+					
+					
+					
+					</td>
+					</tr>
+					</tfoot>
+
+			
+
+			</table>
+		</div>
+	</h:form>
+</h:body>
+</html>

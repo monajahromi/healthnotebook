@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>list page</title>
+	 <ui:include src="/jsinclude.xhtml" />
+<script type="text/javascript">
+
+
+function updateEndSerial(){
+var list= document.getElementById("form:fromSerial"); 
+var list1=document.getElementById("form:howManyPageToPrint");  
+var value= list.value;
+if (!value==""){
+var value1= list1.value;
+
+var a= document.getElementById("form:toSerial");
+a.value=parseInt(value) +parseInt(value1)-1;
+}
+
+
+ 
+
+}
+
+function changeb(){
+var control= $("[id$='control']");
+var print= $("[id$='print']");
+print[0].setAttribute('disabled',true);
+control[0].removeAttribute('disabled');
+
+
+}
+</script>
+<style>
+td {width: 50px;}
+
+
+</style>
+</h:head>
+<h:body>
+
+	<h:form id="form">
+	
+		<div class="portalHeader">
+			<div class="headerLink" >
+			
+					 
+						<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> اعطای مجوز چاپ مجدد دفترچه </li>
+				
+				  
+				</ul> 
+			
+			
+				
+			</div>
+		
+		</div>
+		
+		
+		<div id="formBox" style="    margin-top: 10px;">
+		
+					 
+	   <p:messages id="messages" showDetail="true" closable="true">
+		     <p:autoUpdate />
+    </p:messages>
+		
+		 	
+			<table class="table tableview"  >
+			 
+			<tr><td style="    border-top-style: hidden;">
+			<h:outputText value="شماره قرارداد : "  ></h:outputText> 
+	
+						<h:inputText  	value="#{printPermission.policyno}"  id= "policyno" >
+						</h:inputText></td>
+			
+					
+					</tr>
+				<tr>
+					<td><h:outputText value="کد ملی : "></h:outputText>
+					
+					<h:inputText  	value="#{printPermission.personCode}"  id= "personCode" >
+					</h:inputText>
+					 <p:commandButton value="" action="#{printPermission.findPerson}" update="form:out2" icon="ui-icon-refresh"  style="border: none; outline:none;"/>
+					 <h:outputText id="out2" value="#{printPermission.personName}" />
+					
+					</td>
+					
+				</tr>
+					<tr>
+					<td><h:outputText value="از تاریخ : "  ></h:outputText> 
+						  <p:inputMask id="datef" value="#{printPermission.dateFrom}" mask="9999/99/99" style="direction: ltr;"/>
+						
+					</td>
+					</tr>
+				<tr>
+					<td><h:outputText value="تا تاریخ : "></h:outputText>
+					  <p:inputMask id="datet" value="#{printPermission.dateTo}" mask="9999/99/99" style="direction: ltr;" />
+					 
+					</td>
+				</tr>
+				
+				
+			
+					<tfoot >
+					<tr>
+					<td style= "text-align:left;">
+					
+					<p:commandButton value="بازگشت" action="permisionList"  icon="ui-icon-arrowthick-1-e">
+					</p:commandButton>
+					<p:commandButton value="ثبت" action="#{printPermission.confirm}" ajax="true" onstart=" document.getElementById('loadingbar').style.display=''; " icon=" ui-icon-check"
+					 oncomplete=" document.getElementById('loadingbar').style.display='none'; " 
+					>
+					  <p:confirm header="تایید اعطای مجوز" message="آیا از اعطای مجوز مطمئن هستید   ؟" icon="ui-icon-alert" />
+					</p:commandButton>
+							 <img src="img/ajax-loader.gif"  id="loadingbar" style="display:none"/>
+					
+					
+					
+					</td>
+					</tr>
+					</tfoot>
+
+			
+
+			</table>
+			  <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					    </p:confirmDialog>
+					    
+		</div>
+	</h:form>
+</h:body>
+</html>

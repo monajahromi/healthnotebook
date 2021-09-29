@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>list page</title>
+	 <ui:include src="/jsinclude.xhtml" />
+
+</h:head>
+<h:body>
+	<h:form>
+	<div class="portalHeader">
+			<div class="headerLink">
+				
+				
+			
+				<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> جزییات برگه ها </li>
+				  <li class ="headersecondli"  ><img src="img/ar-l-b.png" /> بیمه شده #{param['name']} </li>
+				  <li class ="headerli"><img src="img/ar-l-b.png" /> سریال دفترچه  #{param['passbookSerial']}</li>
+				</ul> 
+				
+			</div>
+		
+		</div>
+		<br/><br/><br/>
+		<div id="formBox" style="">
+			<table class="table  ">
+				<thead>
+					<tr>
+						<th style=" text-align: center;">ردیف</th>
+						<th style=" text-align: center;">شماره سریال</th>
+						<th style=" text-align: center;">وضعیت</th>
+												
+						
+					</tr>
+				</thead>
+				 <tfoot>
+
+					<tr>
+						<th colspan="3"  >
+						<p:button outcome="viewNotebookDetail" value="بازگشت" icon="ui-icon-arrowthick-1-e">
+						 <f:param name="name" value="#{param['name']}" />
+						</p:button>
+						</th>
+					
+					</tr>
+				</tfoot>
+				<tbody>
+					<ui:repeat var="o" value="#{searchBean.pbgs}">
+
+						<tr>
+							<td class="">#{o.index}</td>
+							<td class="">#{o.passbookPagesSerial}</td>
+							<td class="">	#{o.status eq 'Open'? 'فعال' : o.status}</td>
+							  
+							
+						</tr>
+
+					</ui:repeat>
+				</tbody>
+
+
+			</table>
+		</div>
+	</h:form>
+</h:body>
+</html>

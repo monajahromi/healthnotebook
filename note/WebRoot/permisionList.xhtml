@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>list page</title>
+	 <ui:include src="/jsinclude.xhtml" />
+	 
+
+</h:head>
+<h:body>
+	<h:form id="myform" style="padding: 10px">
+	<h:inputHidden value="#{permisionList.init}"></h:inputHidden>
+  <p:messages id="messages" showDetail="true" closable="true" style="    text-align: right;padding: 20px">
+        <p:autoUpdate />
+    </p:messages>
+ 
+    <p:dataTable id="cars1" widgetVar="cars1" var="o" value="#{permisionList.cList}" editable="true" style="    padding: 20px;">
+    
+        <f:facet name="header">
+            لیست مجوزهای اعطا شده
+        </f:facet>
+        
+ 			<p:column headerText="شماره قرارداد">
+			            <h:outputText value="#{o.policy_no}" />
+			 </p:column>
+             <p:column headerText="کدملی">
+			            <h:outputText value="#{o.nationalcode}" />
+			 </p:column>
+			 <p:column headerText="نام و نام خانوادگی">
+			            <h:outputText value="#{o.firstname}  #{o.lastname} " />
+			 </p:column>
+			    <p:column headerText="تاریخ شروع مجوز">
+			            <h:outputText value="#{o.todateFarsi}" />
+			 </p:column>
+			    <p:column headerText="تاریخ اتمام مجوز">
+			            <h:outputText value="#{o.fromdateFarsi}" />
+			 </p:column>
+			    <p:column headerText="وضعیت مجوز">
+			            <h:outputText value="جدید"   rendered="#{o.status eq 'New'}" />
+			            <h:outputText value="استفاده شده"   rendered="#{o.status eq 'Used'}" />
+			            <h:outputText value="حذف شده"   rendered="#{o.status eq 'Deleted'}" />
+			 </p:column>
+			     <p:column headerText="کاربر اعطا کننده">
+			            <h:outputText value="#{o.user}" />
+			 </p:column>
+			      <p:column >
+			   <p:menuButton  icon="ui-icon-gear" rendered="#{o.status eq 'New'}" >
+			         <p:menuitem  value="حذف مجوز"  action="#{permisionList.deletePermision}" update="cars1" icon="ui-icon-close"  >
+		                    <f:param name="id" value ="#{o.id}"/>
+					          <p:confirm header="تایید حذف مجوز" message="آیا از حذف مجوز #{o.firstname}  #{o.lastname}  مطمئن هستید  ؟" icon="ui-icon-alert" />
+				     </p:menuitem>
+			 </p:menuButton>
+		       <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+		       
+		       </p:column>
+		      
+ </p:dataTable>
+ 
+          <div class="ui-g">
+         <div class="ui-g-12">
+          <h:commandButton
+								value="اعطای مجوز جدید"
+								styleClass="btn btn-primary" 
+								action="printPermission"></h:commandButton>
+         </div>
+     </div>
+ 
+ </h:form>
+	 
+</h:body>
+</html>

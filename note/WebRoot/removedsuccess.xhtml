@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>list page</title>
+ <ui:include src="/jsinclude.xhtml" />
+</h:head>
+<h:body>
+	<h:form>
+		<div class="portalHeader">
+			<div class="headerLink">
+				
+				<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> ابطال سریال های مشکل دار </li>
+				</ul> 
+			</div>
+			<div class="dottedLine"></div>
+		</div>
+		<div id="formBox">
+			<table class="table tableview">
+				<tr>
+					<td style="    border-top-style: hidden;"><h:outputText
+							value="شماره های مورد نظر ابطال شد."></h:outputText>
+					</td>
+				</tr>
+
+				<tr >
+					<th  style="text-align: left;"><h:commandButton
+							styleClass="btn btn-primary" value="چاپ مجدد" action="printNotebook"></h:commandButton>
+					</th>
+				</tr>
+
+
+
+
+			</table>
+		</div>
+	</h:form>
+</h:body>
+</html>

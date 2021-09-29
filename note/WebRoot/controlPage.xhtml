@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>list page</title>
+ <ui:include src="/jsinclude.xhtml" />
+<script type="text/javascript">
+
+
+function selectAll(){
+var list=document.querySelectorAll("input[type=checkbox]"); 
+//$("[id$='checkbox']");
+var selected = !list[0].checked;
+
+for (i=0 ; i  &lt; list.length ; i++ ) {
+list[i].checked=  selected;
+}
+
+
+}
+
+function checkselect(){
+var list=document.querySelectorAll("input[type=checkbox]"); 
+for (i=0 ; i  &lt; list.length ; i++ ) {
+if (list[i].checked==true){
+return true;
+}
+}
+alert('سریال مشکل دار را در جدول انتخاب نمایید');
+return false;
+
+}
+function hei2(){
+
+//var table=document.getElementById("myform");  
+//$("[id='myform']");
+document.getElementById("myform").style.display = "";
+//table.css("display","");
+}
+
+</script>
+</h:head>
+<h:body>
+	<h:form id="form">
+		<div class="portalHeader">
+			<div class="headerLink">
+				
+					<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> چاپ جلد و برگهای دفترچه </li>
+				  <li class ="headersecondli" ><img src="img/ar-l-b.png" />  #{searchBean.peresentedForPrint.name} </li>
+				  
+				</ul> 
+			</div>
+		
+		</div>
+		<div id="formBox">
+	<table class="table tableview"  style= "    width: 50%;">
+			<tr>
+					<td style="    border-top-style: hidden; text-align : right;    border-bottom-style: hidden;color: #00b100;"><h:outputText value=" لطفا ابتدا چاپ جلد و سپس چاپ برگه ها را انجام دهيد 
+					 "></h:outputText>
+				
+			
+					</td>
+					</tr>
+				
+			
+			
+					<tfoot >
+					<tr>
+					<td style= "text-align:left;">
+					<h:commandLink value="چاپ جلد دفترچه" action="#{searchBean.printNotebookCover}" styleClass="btn btn-primary" >
+					</h:commandLink>
+				
+					
+					
+					<h:commandLink value="چاپ برگه های دفترچه"  onclick="hei2();"  action="#{searchBean.printNotebookPages}" style="margin-right: 2px;" id="chapam" 	 styleClass="btn btn-primary" >
+					</h:commandLink>
+								</td>
+								</tr>
+						</tfoot>
+
+			
+
+			</table>
+		</div>
+		</h:form>
+		<h:form id="myform" style="display:none">
+		<div class="portalHeader" style="    padding-top: 0px;">
+			<div class="headerLink">
+				
+					<ul class="headerUL"  >
+				  <li class ="headerfirstli"><img src="img/ar-l.png" /> کنترل سریالهای چاپ شده </li>
+				   <li class ="headersecondli" ><img src="img/ar-l-b.png" />  #{searchBean.peresentedForPrint.name} </li>
+				  
+				</ul> 
+			</div>
+		
+		</div>
+		
+		
+		<div id="formBox" style="    margin-top: 10px;">
+			<h:outputText value="در صورت عدم وجود اشکال در چاپ دفترچه، کليد «تاييد نهايي» را بزنيد." style="   color: #00b100;">
+					 </h:outputText>
+					 <br/>
+					 <h:outputText value="در صورت بروز خطا در چاپ هريک از برگه ها، شماره سريال هاي مشکل دار را در جدول انتخاب کرده و کليد «ابطال» را بزنيد" style="   color: #00b100;">
+					 </h:outputText>
+				
+				
+			<table class="table controltable" style= "    width: 50%;/* display:none */" id="controltable">
+			
+				<thead>
+			
+					<tr>
+						<th style=" text-align: center;">	<input type="button" value="انتخاب" onclick="selectAll();" style="border: none;background: none;"/></th>
+						<th style=" text-align: center;">ردیف</th>
+						<th style=" text-align: center;">شماره سریال</th>
+					</tr>
+				</thead>
+				<tfoot>
+				
+					<tr>
+						<th colspan="3"><h:commandButton
+								value="ابطال سریال های مشکل دار"
+								styleClass="btn btn-primary" onclick=" return checkselect();"
+								action="confirmRemoveBrokenSerial"></h:commandButton>
+								<h:commandButton styleClass="btn btn-primary" style="margin-right: 10px;"  onclick=" document.getElementById('loadingbar').style.display=''; "
+								value="تایید نهایی" action="#{searchBean.confirmPrint}"></h:commandButton>
+									 <img src="img/ajax-loader.gif"  id="loadingbar" style="display:none"/>
+						</th>
+
+					</tr>
+				</tfoot>
+				<tbody>
+					<ui:repeat var="o" value="#{searchBean.peresentedForPrint.psList}">
+
+						<tr>
+
+							<td><h:selectBooleanCheckbox value="#{o.selected}" id="checkbox"/>
+							
+							
+							</td>
+							<td>#{o.index}</td>
+							<td>#{o.serial}</td>
+						</tr>
+
+
+					</ui:repeat>
+				
+				</tbody>
+
+
+			</table>
+
+
+		</div>
+	</h:form>
+</h:body>
+</html>

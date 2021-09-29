@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view>
+	<h:head>
+		<title>search person</title>
+	 <ui:include src="/jsinclude.xhtml" />
+
+	</h:head>
+	<body>
+<div class="portalHeader">
+			<div class="headerLink">
+				<ul class="crumbs2">
+					<li><img src="img/searchins.png" /> <span class="headerLinkBlod">جستجو بیمه شده اصلی</span>
+					</li>
+				</ul>
+			</div>
+			<div class="dottedLine"></div>
+		</div>
+		
+		<div id="formBox"  style="direction: rtl;">
+			<h:form>
+
+  		<div class="form-group" >
+     	 <label  class="control-label col-sm-2">Password:</label>
+     	           
+        <input type="password"  class="col-sm-10" id="pwd" placeholder="Enter password" name="pwd"/>
+    	 
+    	  </div>
+				<div class="input-group" style="direction: rtl; align: right;  width: 300px;">
+
+					<h:inputText value="#{searchBean.nationCode}" styleClass="form-control" style="border-radius: 0px; max-width: 300px; width: 300px;"
+						p:placeholder=" کد ملی بیمه شده اصلی"></h:inputText>
+					<div class="input-group-btn">
+						<h:commandButton value="جستجو" action="#{searchBean.findPerson}"  styleClass="btn btn-default btn-primary" style="border-radius: 0px; "></h:commandButton>
+
+					</div>
+					
+						<div class="input-group-btn">
+						<h:commandButton value=" کاور پرینت" action="#{searchBean.testprint}" styleClass="btn btn-default" style="border-radius: 0px"></h:commandButton>
+
+					</div>
+					<div class="input-group-btn">
+						<h:commandButton value=" صفحه  پرینت" action="#{searchBean.testprintpage}" styleClass="btn btn-default" style="border-radius: 0px"></h:commandButton>
+
+					</div>
+
+					<div class="input-group-btn">
+						<h:commandButton value="تست وب سرویس" action="#{searchBean.testws}" styleClass="btn btn-default" style="border-radius: 0px"></h:commandButton>
+
+					</div>
+					
+				</div>
+
+			</h:form>
+
+
+		</div>
+
+
+
+	</body>
+</f:view>
+</html>

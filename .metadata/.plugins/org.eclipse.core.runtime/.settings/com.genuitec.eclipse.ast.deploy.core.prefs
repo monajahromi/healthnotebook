@@ -1,0 +1,13 @@
+#Tue Sep 28 15:19:09 IRST 2021
+weblogic10Server.note.deployIsOverProject=false
+weblogic10Server.note.shouldBackup=false
+weblogic10Server.note.shouldOverwrite=false
+weblogic10Server.note.isUptoDate=true
+weblogic10Server.note.contextRoot=/HealthNoteBook
+weblogic10Server.note.isExploded=true
+weblogic10Server.note.altContextRoot=
+weblogic10Server.note.deploymentPath=C\:\\Oracle\\Middleware\\user_projects\\domains\\base_domain\\Applications\\autodeploy\\HealthNoteBook
+eclipse.preferences.version=1
+weblogic10Server.note.IEARProjectName=
+weblogic10Server.note.type=WebDeployment
+weblogic10Server.note.isDeployed=true

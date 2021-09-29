@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/el-ri.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jsp-2.1.0.v201105211820.jar"/>
+	<classpathentry kind="lib" path="lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/jsf-api-2.2.9.jar"/>
+	<classpathentry kind="lib" path="lib/jsf-impl-2.2.9.jar"/>
+	<classpathentry kind="lib" path="lib/ws/pardisCommon.jar"/>
+	<classpathentry kind="lib" path="lib/ws/pardisGenericReport.1.6.jar"/>
+	<classpathentry kind="lib" path="lib/ws/jettison-1.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/ws/PardisUtils.jar"/>
+	<classpathentry kind="lib" path="lib/Portal/PortletCommon.jar"/>
+	<classpathentry kind="lib" path="lib/Portal/LoggerCommon.jar"/>
+	<classpathentry kind="lib" path="lib/Portal/java-json.jar"/>
+	<classpathentry kind="lib" path="lib/Portal/fanavaBaseCommon1.6_logging.jar"/>
+	<classpathentry kind="lib" path="lib/jasperreports-fonts-4.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/primefaces-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/Style/bluesky-1.0.10.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/modules from team/Report/pardisreportutils.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/jasperreports/inuse/groovy-1.7.8.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/jasperreports/inuse/iText-2.1.7.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/jasperreports/inuse/jasperreports-4.0.1.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/jasperreports/inuse/jdt-compiler-3.1.1.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/jasperreports/inuse/jxl-2.6.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/jasperreports/inuse/poi-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/pmd/asm-3.0.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/modules from team/GenericManagedBeans/pardisGenericManagedBean.jar"/>
+	<classpathentry kind="lib" path="I:/Workspaces/lib/modules from team/GenericManagedBeans/pardisGenericManagedBeancommon.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/weblogic-sys"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_75"/>
+	<classpathentry kind="lib" path="I:/notebookworkspace(MyEclipse)/note/lib/ws/owraghcommon1.6.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>
